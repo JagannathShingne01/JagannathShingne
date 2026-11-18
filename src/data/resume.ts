@@ -67,8 +67,8 @@ export const PROFILE = {
     {
       id: 'leetcode',
       label: 'LeetCode',
-      handle: 'jagannath_21',
-      url: 'https://leetcode.com/jagannath_21',
+      handle: 'Jagannath_21',
+      url: 'https://leetcode.com/u/Jagannath_21/',
       description: 'Data structures, algorithms, and problem-solving practice.',
     },
   ],
