@@ -9,17 +9,17 @@ export interface ExperienceHighlight {
 export interface ProjectItem {
   id: string;
   title: string;
-  kind: 'Open Source Project' | 'Production Platform';
+  kind: 'Distributed Systems' | 'Full-Stack Web';
   tagline: string;
   stack: string[];
-  githubUrl?: string;
+  githubUrl: string;
   highlights: string[];
   architectureFlow: {
     step: string;
     component: string;
     detail: string;
   }[];
-  diagramType: 'webrtc' | 'coursify' | 'volkai';
+  diagramType: 'webrtc' | 'coursify' | 'searchx';
 }
 
 export interface SkillGroup {
@@ -221,9 +221,47 @@ export const EXPERIENCE = {
 
 export const PROJECTS: ProjectItem[] = [
   {
+    id: 'searchx',
+    title: 'SearchX',
+    kind: 'Distributed Systems',
+    tagline:
+      'Production-ready, low-latency autocomplete search engine built for millions of products using Elasticsearch, Redis caching, RabbitMQ, and PostgreSQL.',
+    stack: ['Next.js', 'Node.js', 'PostgreSQL', 'RabbitMQ', 'Elasticsearch', 'Redis'],
+    githubUrl: 'https://github.com/JagannathShingne01/searchX',
+    diagramType: 'searchx',
+    highlights: [
+      'Decoupled product mutations from search reads using PostgreSQL as the source of truth and RabbitMQ event publishing.',
+      'Built asynchronous background workers to consume product events and synchronize the Elasticsearch index reliably.',
+      'Engineered an autocomplete Search API layered with Redis caching to serve high-throughput queries at minimal latency.',
+      'Connected a responsive Next.js search interface for instant prefix matching and real-time product discovery.',
+    ],
+    architectureFlow: [
+      {
+        step: '01',
+        component: 'Product CRUD & PostgreSQL',
+        detail: 'Persists authoritative product records in PostgreSQL and publishes mutation events to the message broker.',
+      },
+      {
+        step: '02',
+        component: 'RabbitMQ & Background Worker',
+        detail: 'Queues product update events asynchronously so background workers keep search indexing non-blocking.',
+      },
+      {
+        step: '03',
+        component: 'Elasticsearch Index',
+        detail: 'Dedicated full-text and autocomplete index synchronized by background workers for fast multi-million record lookup.',
+      },
+      {
+        step: '04',
+        component: 'Redis Cache & Next.js UI',
+        detail: 'Search API checks Redis cache before querying Elasticsearch and streams instant suggestions to the Next.js frontend.',
+      },
+    ],
+  },
+  {
     id: 'realtime-meeting',
     title: 'Real-Time Meeting Platform',
-    kind: 'Open Source Project',
+    kind: 'Distributed Systems',
     tagline:
       'Distributed WebRTC video conferencing with WebSocket messaging and synchronized collaborative whiteboarding.',
     stack: ['Node.js', 'Express.js', 'WebSockets', 'WebRTC', 'Microservices', 'Docker'],
@@ -262,7 +300,7 @@ export const PROJECTS: ProjectItem[] = [
   {
     id: 'coursify',
     title: 'Coursify',
-    kind: 'Open Source Project',
+    kind: 'Full-Stack Web',
     tagline:
       'Full-stack course management and video learning platform with Razorpay checkout, JWT RBAC, and Cloudinary media.',
     stack: ['React.js', 'Node.js', 'Express.js', 'Tailwind CSS', 'MongoDB', 'Razorpay', 'Cloudinary', 'JWT'],
@@ -294,43 +332,6 @@ export const PROJECTS: ProjectItem[] = [
         step: '04',
         component: 'Cloudinary Media Pipeline',
         detail: 'Optimized upload, transcoding, and CDN-backed streaming delivery for lecture video assets.',
-      },
-    ],
-  },
-  {
-    id: 'volkai-hr',
-    title: 'Volkai HR',
-    kind: 'Production Platform',
-    tagline:
-      'Agentic AI interview automation system engineered with LangGraph workflows, RabbitMQ video pipelines, and CASL RBAC.',
-    stack: ['Next.js', 'Node.js', 'Express.js', 'LangChain', 'LangGraph', 'RabbitMQ', 'CASL RBAC', 'Docker', 'AWS S3'],
-    diagramType: 'volkai',
-    highlights: [
-      'Architected end-to-end agentic interview automation using LangChain and LangGraph state graphs.',
-      'Decoupled backend services into Node.js microservices, improving API response time by 25% and cutting server load by 30%.',
-      'Migrated video processing to an asynchronous RabbitMQ worker queue, reducing API response latency by 70–80%.',
-      'Secured multi-service access with SSO, CASL-based RBAC, automated S3 MongoDB backups, and Jest test coverage.',
-    ],
-    architectureFlow: [
-      {
-        step: '01',
-        component: 'Next.js Client & SSO Gateway',
-        detail: 'Unified single sign-on and fine-grained CASL permission checks across recruiter and candidate portals.',
-      },
-      {
-        step: '02',
-        component: 'LangGraph Agent Engine',
-        detail: 'Stateful interview orchestration executing structured evaluation workflows autonomously.',
-      },
-      {
-        step: '03',
-        component: 'RabbitMQ Async Workers',
-        detail: 'Offloads heavy interview video processing from HTTP request threads for 70–80% faster API responses.',
-      },
-      {
-        step: '04',
-        component: 'S3 Backup & CI/CD Ops',
-        detail: 'GitHub Actions pipelines deploying Docker containers to DigitalOcean with scheduled mongodump S3 backups.',
       },
     ],
   },

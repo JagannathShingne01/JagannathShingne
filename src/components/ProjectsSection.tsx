@@ -6,9 +6,51 @@ interface ProjectsSectionProps {
   onSelectProject: (project: ProjectItem) => void;
 }
 
-type ProjectFilter = 'all' | 'Open Source Project' | 'Production Platform';
+type ProjectFilter = 'all' | 'Distributed Systems' | 'Full-Stack Web';
 
 function ProjectDiagramPreview({ type }: { type: ProjectItem['diagramType'] }) {
+  if (type === 'searchx') {
+    return (
+      <svg
+        viewBox="0 0 360 140"
+        className="h-36 w-full rounded-xl border border-zinc-200 bg-[#FAFAFA] dark:border-zinc-800 dark:bg-zinc-950"
+        role="img"
+        aria-label="SearchX PostgreSQL, RabbitMQ, Elasticsearch, and Redis autocomplete pipeline"
+      >
+        <g fill="none" stroke="currentColor" className="text-zinc-300 dark:text-zinc-700" strokeWidth="1.2">
+          <path d="M90 42 L134 42" />
+          <path d="M222 42 L262 42" />
+          <path d="M302 60 L302 86" />
+          <path d="M262 104 L222 104" />
+          <path d="M134 104 L90 104" />
+        </g>
+        <g>
+          <rect x="14" y="24" width="76" height="36" rx="7" className="fill-white stroke-zinc-300 dark:fill-zinc-900 dark:stroke-zinc-700" />
+          <text x="52" y="40" textAnchor="middle" className="fill-zinc-800 dark:fill-zinc-200 text-[9px] font-mono">CRUD API</text>
+          <text x="52" y="52" textAnchor="middle" className="fill-zinc-500 dark:fill-zinc-400 text-[8px] font-mono">PostgreSQL</text>
+
+          <rect x="134" y="24" width="88" height="36" rx="7" className="fill-white stroke-zinc-300 dark:fill-zinc-900 dark:stroke-zinc-700" />
+          <text x="178" y="40" textAnchor="middle" className="fill-zinc-800 dark:fill-zinc-200 text-[9px] font-mono">RabbitMQ</text>
+          <text x="178" y="52" textAnchor="middle" className="fill-zinc-500 dark:fill-zinc-400 text-[8px] font-mono">Worker Sync</text>
+
+          <rect x="262" y="24" width="84" height="36" rx="7" className="fill-[#0A0A0A] stroke-[#0A0A0A] dark:fill-zinc-100 dark:stroke-zinc-100" />
+          <text x="304" y="40" textAnchor="middle" className="fill-white dark:fill-zinc-950 text-[9px] font-mono">Elastic</text>
+          <text x="304" y="52" textAnchor="middle" className="fill-zinc-300 dark:fill-zinc-600 text-[8px] font-mono">search Index</text>
+
+          <rect x="262" y="86" width="84" height="36" rx="7" className="fill-white stroke-zinc-300 dark:fill-zinc-900 dark:stroke-zinc-700" />
+          <text x="304" y="102" textAnchor="middle" className="fill-zinc-800 dark:fill-zinc-200 text-[9px] font-mono">Search API</text>
+          <text x="304" y="114" textAnchor="middle" className="fill-zinc-500 dark:fill-zinc-400 text-[8px] font-mono">Autocomplete</text>
+
+          <rect x="134" y="86" width="88" height="36" rx="7" className="fill-white stroke-zinc-300 dark:fill-zinc-900 dark:stroke-zinc-700" />
+          <text x="178" y="108" textAnchor="middle" className="fill-zinc-800 dark:fill-zinc-200 text-[9px] font-mono">Redis Cache</text>
+
+          <rect x="14" y="86" width="76" height="36" rx="7" className="fill-white stroke-zinc-300 dark:fill-zinc-900 dark:stroke-zinc-700" />
+          <text x="52" y="108" textAnchor="middle" className="fill-zinc-800 dark:fill-zinc-200 text-[9px] font-mono">Next.js UI</text>
+        </g>
+      </svg>
+    );
+  }
+
   if (type === 'webrtc') {
     return (
       <svg
@@ -47,70 +89,35 @@ function ProjectDiagramPreview({ type }: { type: ProjectItem['diagramType'] }) {
     );
   }
 
-  if (type === 'coursify') {
-    return (
-      <svg
-        viewBox="0 0 360 140"
-        className="h-36 w-full rounded-xl border border-zinc-200 bg-[#FAFAFA] dark:border-zinc-800 dark:bg-zinc-950"
-        role="img"
-        aria-label="Coursify JWT, Razorpay, and Cloudinary architecture schematic"
-      >
-        <g fill="none" stroke="currentColor" className="text-zinc-300 dark:text-zinc-700" strokeWidth="1.2">
-          <path d="M96 70 L140 70" />
-          <path d="M220 70 L264 44" />
-          <path d="M220 70 L264 70" />
-          <path d="M220 70 L264 96" />
-        </g>
-        <g>
-          <rect x="18" y="50" width="78" height="40" rx="8" className="fill-white stroke-zinc-300 dark:fill-zinc-900 dark:stroke-zinc-700" />
-          <text x="57" y="74" textAnchor="middle" className="fill-zinc-800 dark:fill-zinc-200 text-[10px] font-mono">React UI</text>
-
-          <rect x="140" y="48" width="80" height="44" rx="8" className="fill-[#0A0A0A] stroke-[#0A0A0A] dark:fill-zinc-100 dark:stroke-zinc-100" />
-          <text x="180" y="68" textAnchor="middle" className="fill-white dark:fill-zinc-950 text-[10px] font-mono">Express</text>
-          <text x="180" y="81" textAnchor="middle" className="fill-zinc-300 dark:fill-zinc-600 text-[8.5px] font-mono">JWT Auth</text>
-
-          <rect x="264" y="24" width="78" height="26" rx="6" className="fill-white stroke-zinc-300 dark:fill-zinc-900 dark:stroke-zinc-700" />
-          <text x="303" y="41" textAnchor="middle" className="fill-zinc-700 dark:fill-zinc-300 text-[9px] font-mono">Razorpay</text>
-
-          <rect x="264" y="57" width="78" height="26" rx="6" className="fill-white stroke-zinc-300 dark:fill-zinc-900 dark:stroke-zinc-700" />
-          <text x="303" y="74" textAnchor="middle" className="fill-zinc-700 dark:fill-zinc-300 text-[9px] font-mono">MongoDB</text>
-
-          <rect x="264" y="90" width="78" height="26" rx="6" className="fill-white stroke-zinc-300 dark:fill-zinc-900 dark:stroke-zinc-700" />
-          <text x="303" y="107" textAnchor="middle" className="fill-zinc-700 dark:fill-zinc-300 text-[9px] font-mono">Cloudinary</text>
-        </g>
-      </svg>
-    );
-  }
-
   return (
     <svg
       viewBox="0 0 360 140"
       className="h-36 w-full rounded-xl border border-zinc-200 bg-[#FAFAFA] dark:border-zinc-800 dark:bg-zinc-950"
       role="img"
-      aria-label="Volkai HR LangGraph and RabbitMQ asynchronous pipeline schematic"
+      aria-label="Coursify JWT, Razorpay, and Cloudinary architecture schematic"
     >
       <g fill="none" stroke="currentColor" className="text-zinc-300 dark:text-zinc-700" strokeWidth="1.2">
-        <path d="M94 50 L134 50" />
-        <path d="M226 50 L266 50" />
-        <path d="M180 70 L180 94" />
-        <path d="M226 108 L266 108" />
+        <path d="M96 70 L140 70" />
+        <path d="M220 70 L264 44" />
+        <path d="M220 70 L264 70" />
+        <path d="M220 70 L264 96" />
       </g>
       <g>
-        <rect x="18" y="32" width="76" height="36" rx="8" className="fill-white stroke-zinc-300 dark:fill-zinc-900 dark:stroke-zinc-700" />
-        <text x="56" y="54" textAnchor="middle" className="fill-zinc-800 dark:fill-zinc-200 text-[9.5px] font-mono">SSO / RBAC</text>
+        <rect x="18" y="50" width="78" height="40" rx="8" className="fill-white stroke-zinc-300 dark:fill-zinc-900 dark:stroke-zinc-700" />
+        <text x="57" y="74" textAnchor="middle" className="fill-zinc-800 dark:fill-zinc-200 text-[10px] font-mono">React UI</text>
 
-        <rect x="134" y="30" width="92" height="40" rx="8" className="fill-[#0A0A0A] stroke-[#0A0A0A] dark:fill-zinc-100 dark:stroke-zinc-100" />
-        <text x="180" y="48" textAnchor="middle" className="fill-white dark:fill-zinc-950 text-[9.5px] font-mono">LangGraph</text>
-        <text x="180" y="61" textAnchor="middle" className="fill-zinc-300 dark:fill-zinc-600 text-[8.5px] font-mono">AI Agent</text>
+        <rect x="140" y="48" width="80" height="44" rx="8" className="fill-[#0A0A0A] stroke-[#0A0A0A] dark:fill-zinc-100 dark:stroke-zinc-100" />
+        <text x="180" y="68" textAnchor="middle" className="fill-white dark:fill-zinc-950 text-[10px] font-mono">Express</text>
+        <text x="180" y="81" textAnchor="middle" className="fill-zinc-300 dark:fill-zinc-600 text-[8.5px] font-mono">JWT Auth</text>
 
-        <rect x="266" y="32" width="76" height="36" rx="8" className="fill-white stroke-zinc-300 dark:fill-zinc-900 dark:stroke-zinc-700" />
-        <text x="304" y="54" textAnchor="middle" className="fill-zinc-800 dark:fill-zinc-200 text-[9.5px] font-mono">Next.js UI</text>
+        <rect x="264" y="24" width="78" height="26" rx="6" className="fill-white stroke-zinc-300 dark:fill-zinc-900 dark:stroke-zinc-700" />
+        <text x="303" y="41" textAnchor="middle" className="fill-zinc-700 dark:fill-zinc-300 text-[9px] font-mono">Razorpay</text>
 
-        <rect x="134" y="92" width="92" height="32" rx="8" className="fill-white stroke-zinc-300 dark:fill-zinc-900 dark:stroke-zinc-700" />
-        <text x="180" y="112" textAnchor="middle" className="fill-zinc-800 dark:fill-zinc-200 text-[9.5px] font-mono">RabbitMQ</text>
+        <rect x="264" y="57" width="78" height="26" rx="6" className="fill-white stroke-zinc-300 dark:fill-zinc-900 dark:stroke-zinc-700" />
+        <text x="303" y="74" textAnchor="middle" className="fill-zinc-700 dark:fill-zinc-300 text-[9px] font-mono">MongoDB</text>
 
-        <rect x="266" y="92" width="76" height="32" rx="8" className="fill-white stroke-zinc-300 dark:fill-zinc-900 dark:stroke-zinc-700" />
-        <text x="304" y="112" textAnchor="middle" className="fill-zinc-600 dark:fill-zinc-400 text-[9px] font-mono">S3 Backup</text>
+        <rect x="264" y="90" width="78" height="26" rx="6" className="fill-white stroke-zinc-300 dark:fill-zinc-900 dark:stroke-zinc-700" />
+        <text x="303" y="107" textAnchor="middle" className="fill-zinc-700 dark:fill-zinc-300 text-[9px] font-mono">Cloudinary</text>
       </g>
     </svg>
   );
@@ -123,32 +130,30 @@ export function ProjectsSection({ onSelectProject }: ProjectsSectionProps) {
     filter === 'all' ? PROJECTS : PROJECTS.filter((p) => p.kind === filter);
 
   return (
-    <section id="projects" className="border-b border-zinc-200 bg-[#FAFAFA] py-16 lg:py-24 dark:border-zinc-800/80 dark:bg-[#09090B]">
+    <section
+      id="projects"
+      className="border-b border-zinc-200 bg-[#FAFAFA] py-16 lg:py-24 dark:border-zinc-800/80 dark:bg-[#09090B]"
+    >
       <div className="mx-auto max-w-6xl px-6">
         <div className="flex flex-col justify-between gap-6 sm:flex-row sm:items-end">
           <div>
             <p className="font-mono text-xs font-medium text-zinc-500 dark:text-zinc-400">
-              02. Selected Engineering Work
+              02. Personal Engineering Projects
             </p>
             <h2 className="mt-2 font-display text-3xl font-bold tracking-tight text-[#0A0A0A] text-balance sm:text-4xl dark:text-zinc-50">
-              Projects &amp; Production Systems
+              Personal Projects
             </h2>
           </div>
 
           <div
             className="inline-flex items-center gap-1 rounded-xl border border-zinc-200 bg-white p-1 self-start sm:self-auto dark:border-zinc-800 dark:bg-zinc-900"
             role="tablist"
-            aria-label="Filter projects"
+            aria-label="Filter personal projects"
           >
-            {(['all', 'Open Source Project', 'Production Platform'] as ProjectFilter[]).map(
+            {(['all', 'Distributed Systems', 'Full-Stack Web'] as ProjectFilter[]).map(
               (tab) => {
                 const isActive = filter === tab;
-                const label =
-                  tab === 'all'
-                    ? 'All Work'
-                    : tab === 'Open Source Project'
-                      ? 'Personal Projects'
-                      : 'Production';
+                const label = tab === 'all' ? 'All Projects' : tab;
                 return (
                   <button
                     key={tab}
@@ -215,26 +220,16 @@ export function ProjectsSection({ onSelectProject }: ProjectsSectionProps) {
                   <span>Inspect Architecture</span>
                 </button>
 
-                {project.githubUrl ? (
-                  <a
-                    href={project.githubUrl}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="inline-flex items-center gap-1 text-xs font-semibold text-zinc-700 whitespace-nowrap shrink-0 transition-colors hover:text-[#0A0A0A] dark:text-zinc-300 dark:hover:text-zinc-50"
-                  >
-                    <GitBranch className="h-3.5 w-3.5" />
-                    <span>GitHub</span>
-                    <ArrowUpRight className="h-3.5 w-3.5" />
-                  </a>
-                ) : (
-                  <a
-                    href="#experience"
-                    className="inline-flex items-center gap-1 text-xs font-semibold text-zinc-700 whitespace-nowrap shrink-0 transition-colors hover:text-[#0A0A0A] dark:text-zinc-300 dark:hover:text-zinc-50"
-                  >
-                    <span>See Role Impact</span>
-                    <ArrowUpRight className="h-3.5 w-3.5" />
-                  </a>
-                )}
+                <a
+                  href={project.githubUrl}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="inline-flex items-center gap-1 text-xs font-semibold text-zinc-700 whitespace-nowrap shrink-0 transition-colors hover:text-[#0A0A0A] dark:text-zinc-300 dark:hover:text-zinc-50"
+                >
+                  <GitBranch className="h-3.5 w-3.5" />
+                  <span>GitHub</span>
+                  <ArrowUpRight className="h-3.5 w-3.5" />
+                </a>
               </div>
             </article>
           ))}
