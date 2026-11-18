@@ -29,6 +29,15 @@ export interface SkillGroup {
   items: string[];
 }
 
+export interface BlogPost {
+  id: string;
+  title: string;
+  platform: string;
+  topics: string[];
+  summary: string;
+  url: string;
+}
+
 export const RESUME_PDF_URL = '/assets/aistudio/JagannathSDE1_15dcad03.pdf';
 
 export const PROFILE = {
@@ -52,14 +61,14 @@ export const PROFILE = {
       id: 'linkedin',
       label: 'LinkedIn',
       handle: 'Jagannath-Shingne',
-      url: 'https://www.linkedin.com/in/jagannath-shingne',
+      url: 'https://www.linkedin.com/in/jagannath-shingne-201aba236',
       description: 'Professional experience, production milestones, and engineering updates.',
     },
     {
       id: 'leetcode',
       label: 'LeetCode',
       handle: 'jagannath_21',
-      url: 'https://leetcode.com/u/jagannath_21',
+      url: 'https://leetcode.com/jagannath_21',
       description: 'Data structures, algorithms, and problem-solving practice.',
     },
   ],
@@ -265,7 +274,7 @@ export const PROJECTS: ProjectItem[] = [
     tagline:
       'Distributed WebRTC video conferencing with WebSocket messaging and synchronized collaborative whiteboarding.',
     stack: ['Node.js', 'Express.js', 'WebSockets', 'WebRTC', 'Microservices', 'Docker'],
-    githubUrl: 'https://github.com/JagannathShingne01',
+    githubUrl: 'https://github.com/JagannathShingne01/meet-with-js',
     diagramType: 'webrtc',
     highlights: [
       'Built a scalable application using a microservices-based architecture, enabling independent services.',
@@ -304,7 +313,7 @@ export const PROJECTS: ProjectItem[] = [
     tagline:
       'Full-stack course management and video learning platform with Razorpay checkout, JWT RBAC, and Cloudinary media.',
     stack: ['React.js', 'Node.js', 'Express.js', 'Tailwind CSS', 'MongoDB', 'Razorpay', 'Cloudinary', 'JWT'],
-    githubUrl: 'https://github.com/JagannathShingne01',
+    githubUrl: 'https://github.com/JagannathShingne01/LMS_Client',
     diagramType: 'coursify',
     highlights: [
       'Developed a system for admins to manage lectures and users to watch them via an intuitive, responsive frontend interface.',
@@ -410,11 +419,34 @@ export const COURSES = [
     title: 'Full Stack Developer',
     issuer: 'PW Skills Certificate',
     focus: 'End-to-end MERN stack architecture, REST APIs, database modeling, and responsive UI engineering.',
+    url: 'https://drive.google.com/file/d/1_0RUMsu7MvLIKgnOexHmcL22yDyahX2l/view',
   },
   {
     id: 'mettl',
     title: 'Java Full Stack Development',
     issuer: 'Mettl Certificate',
     focus: 'Object-oriented programming in Java, SQL persistence, backend service design, and full-stack delivery.',
+    url: 'https://drive.google.com/file/d/12X7sM5NF7wGKZQvBwFhOag1Y3T_Z26rh/view',
+  },
+];
+
+export const TECH_BLOGS: BlogPost[] = [
+  {
+    id: 'rabbitmq-video-pipeline',
+    title: 'From Synchronous to Scalable: Redesigning Video Processing with RabbitMQ',
+    platform: 'DEV Community',
+    topics: ['RabbitMQ', 'Node.js', 'FFmpeg', 'AWS S3', 'Async Architecture'],
+    summary:
+      'Architectural deep dive into decoupling blocking S3 uploads, FFmpeg transcoding, and subtitle generation into an asynchronous RabbitMQ worker pipeline to cut API latency by 70–80%.',
+    url: 'https://dev.to/jagannathshingne01/from-synchronous-to-scalable-redesigning-video-processing-with-rabbitmq-3dbb',
+  },
+  {
+    id: 'automated-mongodb-backups',
+    title: 'Automated MongoDB Backups: Production-Ready Guide',
+    platform: 'DEV Community',
+    topics: ['MongoDB', 'mongodump', 'AWS S3', 'Cron Jobs', 'Disaster Recovery'],
+    summary:
+      'Step-by-step guide to designing a fault-tolerant MongoDB backup and restore system using mongodump, scheduled cron jobs, S3 object storage, metadata tracking, and safe retention cleanup.',
+    url: 'https://dev.to/jagannathshingne01/automated-mongodb-backups-production-ready-guide-2308',
   },
 ];

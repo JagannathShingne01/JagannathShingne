@@ -10,15 +10,14 @@ import {
   Moon,
   Sun,
 } from 'lucide-react';
-import { ARCHITECTURE_NODES, HERO_METRICS, PROFILE } from '../data/resume';
+import { ARCHITECTURE_NODES, HERO_METRICS, PROFILE, RESUME_PDF_URL } from '../data/resume';
 
 interface HeroSectionProps {
   theme: 'dark' | 'light';
   onToggleTheme: () => void;
-  onOpenResume: () => void;
 }
 
-export function HeroSection({ theme, onToggleTheme, onOpenResume }: HeroSectionProps) {
+export function HeroSection({ theme, onToggleTheme }: HeroSectionProps) {
   const [selectedNodeId, setSelectedNodeId] = useState(ARCHITECTURE_NODES[2].id);
   const [copiedEmail, setCopiedEmail] = useState(false);
 
@@ -114,16 +113,16 @@ export function HeroSection({ theme, onToggleTheme, onOpenResume }: HeroSectionP
             </div>
 
             <div className="mt-8 space-y-6">
-              {/* Primary Action Row matching reference monochrome style */}
+              {/* Primary Action Row with direct PDF download */}
               <div className="flex flex-wrap items-center gap-3">
-                <button
-                  type="button"
-                  onClick={onOpenResume}
-                  className="inline-flex items-center gap-2 rounded-xl bg-[#0A0A0A] px-5 py-3 text-sm font-semibold text-white whitespace-nowrap shrink-0 transition-colors duration-150 hover:bg-zinc-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-zinc-950 focus-visible:ring-offset-2 dark:bg-zinc-100 dark:text-zinc-950 dark:hover:bg-zinc-200 dark:focus-visible:ring-offset-[#09090B] cursor-pointer"
+                <a
+                  href={RESUME_PDF_URL}
+                  download="Jagannath_Shingne_Resume.pdf"
+                  className="inline-flex items-center gap-2 rounded-xl bg-[#0A0A0A] px-5 py-3 text-sm font-semibold text-white whitespace-nowrap shrink-0 transition-colors duration-150 hover:bg-zinc-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-zinc-950 focus-visible:ring-offset-2 dark:bg-zinc-100 dark:text-zinc-950 dark:hover:bg-zinc-200 dark:focus-visible:ring-offset-[#09090B]"
                 >
                   <FileDown className="h-4 w-4" />
                   <span>Download Resume</span>
-                </button>
+                </a>
 
                 <button
                   type="button"
@@ -147,7 +146,7 @@ export function HeroSection({ theme, onToggleTheme, onOpenResume }: HeroSectionP
                 </span>
 
                 <a
-                  href="https://www.linkedin.com/in/jagannath-shingne"
+                  href="https://www.linkedin.com/in/jagannath-shingne-201aba236"
                   target="_blank"
                   rel="noreferrer"
                   className="inline-flex items-center gap-1.5 rounded-lg border border-zinc-200 bg-white px-3 py-1.5 font-mono text-xs font-medium text-zinc-800 whitespace-nowrap shrink-0 shadow-xs transition-colors hover:border-zinc-400 dark:border-zinc-800 dark:bg-zinc-900 dark:text-zinc-200 dark:hover:border-zinc-600"
@@ -169,7 +168,7 @@ export function HeroSection({ theme, onToggleTheme, onOpenResume }: HeroSectionP
                 </a>
 
                 <a
-                  href="#connect"
+                  href={`mailto:${PROFILE.email}`}
                   className="inline-flex items-center gap-1.5 rounded-lg border border-zinc-200 bg-white px-3 py-1.5 font-mono text-xs font-medium text-zinc-800 whitespace-nowrap shrink-0 shadow-xs transition-colors hover:border-zinc-400 dark:border-zinc-800 dark:bg-zinc-900 dark:text-zinc-200 dark:hover:border-zinc-600"
                 >
                   <Mail className="h-3.5 w-3.5" />

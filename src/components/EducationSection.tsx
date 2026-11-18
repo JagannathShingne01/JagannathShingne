@@ -1,4 +1,4 @@
-import { Award, GraduationCap } from 'lucide-react';
+import { ArrowUpRight, Award, GraduationCap } from 'lucide-react';
 import { COURSES, EDUCATION } from '../data/resume';
 
 export function EducationSection() {
@@ -58,30 +58,46 @@ export function EducationSection() {
             </p>
           </div>
 
-          {/* Courses & Certificates */}
+          {/* Courses & Certificates with Google Drive redirect links */}
           <div className="flex flex-col justify-between gap-6 lg:col-span-5">
             {COURSES.map((course) => (
-              <div
+              <a
                 key={course.id}
-                className="flex-1 rounded-2xl border border-zinc-200 bg-white p-6 shadow-xs dark:border-zinc-800 dark:bg-zinc-900/40"
+                href={course.url}
+                target="_blank"
+                rel="noreferrer"
+                className="group flex-1 rounded-2xl border border-zinc-200 bg-white p-6 shadow-xs transition-colors duration-150 hover:border-[#0A0A0A] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-zinc-950 dark:border-zinc-800 dark:bg-zinc-900/40 dark:hover:border-zinc-500"
               >
-                <div className="flex items-start gap-3">
-                  <span className="mt-0.5 inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-xl border border-zinc-200 bg-[#FAFAFA] text-[#0A0A0A] dark:border-zinc-800 dark:bg-zinc-950 dark:text-zinc-100">
-                    <Award className="h-4 w-4" />
-                  </span>
-                  <div>
-                    <h3 className="font-display text-lg font-bold text-[#0A0A0A] dark:text-zinc-50">
-                      {course.title}
-                    </h3>
-                    <p className="mt-0.5 font-mono text-xs font-medium text-zinc-600 dark:text-zinc-400">
-                      {course.issuer}
-                    </p>
-                    <p className="mt-2.5 text-sm leading-relaxed text-zinc-600 dark:text-zinc-400">
-                      {course.focus}
-                    </p>
+                <div className="flex items-start justify-between gap-3">
+                  <div className="flex items-start gap-3">
+                    <span className="mt-0.5 inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-xl border border-zinc-200 bg-[#FAFAFA] text-[#0A0A0A] dark:border-zinc-800 dark:bg-zinc-950 dark:text-zinc-100">
+                      <Award className="h-4 w-4" />
+                    </span>
+                    <div>
+                      <h3 className="font-display text-lg font-bold text-[#0A0A0A] group-hover:underline group-hover:underline-offset-4 dark:text-zinc-50">
+                        {course.title}
+                      </h3>
+                      <p className="mt-0.5 font-mono text-xs font-medium text-zinc-600 dark:text-zinc-400">
+                        {course.issuer}
+                      </p>
+                      <p className="mt-2.5 text-sm leading-relaxed text-zinc-600 dark:text-zinc-400">
+                        {course.focus}
+                      </p>
+                    </div>
                   </div>
+
+                  <ArrowUpRight className="mt-1 h-4 w-4 shrink-0 text-zinc-400 transition-transform duration-150 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-[#0A0A0A] dark:group-hover:text-zinc-100" />
                 </div>
-              </div>
+
+                <div className="mt-4 flex items-center justify-between border-t border-zinc-200 pt-3 dark:border-zinc-800">
+                  <span className="font-mono text-xs font-medium text-[#0A0A0A] dark:text-zinc-200">
+                    View Certificate on Google Drive
+                  </span>
+                  <span className="font-mono text-[11px] text-zinc-400 dark:text-zinc-500">
+                    drive.google.com
+                  </span>
+                </div>
+              </a>
             ))}
           </div>
         </div>
