@@ -1,19 +1,18 @@
 import { useEffect, useState } from 'react';
+import { BlogsSection } from './components/BlogsSection';
 import { EducationSection } from './components/EducationSection';
 import { ExperienceSection } from './components/ExperienceSection';
 import { HeroSection } from './components/HeroSection';
 import { Navbar } from './components/Navbar';
 import { ProjectModal } from './components/ProjectModal';
 import { ProjectsSection } from './components/ProjectsSection';
-import { ResumeModal } from './components/ResumeModal';
 import { SkillsSection } from './components/SkillsSection';
 import { SocialConnectSection } from './components/SocialConnectSection';
-import { PROFILE, type ProjectItem } from './data/resume';
+import { PROFILE, RESUME_PDF_URL, type ProjectItem } from './data/resume';
 
 export default function App() {
   const [theme, setTheme] = useState<'light' | 'dark'>('light');
   const [selectedProject, setSelectedProject] = useState<ProjectItem | null>(null);
-  const [resumeOpen, setResumeOpen] = useState(false);
 
   useEffect(() => {
     const root = document.documentElement;
@@ -30,19 +29,16 @@ export default function App() {
 
   return (
     <div className="min-h-screen bg-[#FAFAFA] text-[#0A0A0A] dark:bg-[#09090B] dark:text-zinc-100">
-      <Navbar onOpenResume={() => setResumeOpen(true)} />
+      <Navbar />
 
       <main>
-        <HeroSection
-          theme={theme}
-          onToggleTheme={toggleTheme}
-          onOpenResume={() => setResumeOpen(true)}
-        />
+        <HeroSection theme={theme} onToggleTheme={toggleTheme} />
         <ExperienceSection />
         <ProjectsSection onSelectProject={setSelectedProject} />
         <SkillsSection />
         <EducationSection />
-        <SocialConnectSection onOpenResume={() => setResumeOpen(true)} />
+        <BlogsSection />
+        <SocialConnectSection />
       </main>
 
       <footer className="border-t border-zinc-200 bg-white py-8 dark:border-zinc-800/80 dark:bg-[#09090B]">
@@ -63,13 +59,14 @@ export default function App() {
                 {social.label}
               </a>
             ))}
-            <button
-              type="button"
-              onClick={() => setResumeOpen(true)}
-              className="font-medium text-zinc-900 transition-colors hover:underline hover:underline-offset-4 dark:text-zinc-200 cursor-pointer"
+            <a
+              href={RESUME_PDF_URL}
+              target="_blank"
+              rel="noreferrer"
+              className="font-medium text-zinc-900 transition-colors hover:underline hover:underline-offset-4 dark:text-zinc-200"
             >
               Resume PDF
-            </button>
+            </a>
           </div>
         </div>
       </footer>
@@ -78,8 +75,6 @@ export default function App() {
         project={selectedProject}
         onClose={() => setSelectedProject(null)}
       />
-
-      <ResumeModal open={resumeOpen} onClose={() => setResumeOpen(false)} />
     </div>
   );
 }
