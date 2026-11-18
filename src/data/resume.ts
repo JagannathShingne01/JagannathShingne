@@ -29,7 +29,7 @@ export interface SkillGroup {
   items: string[];
 }
 
-export const RESUME_PDF_URL = '/assets/aistudio/JagannathSDE1_15dcad03.pdf';
+export const RESUME_PDF_URL = '/assets/aistudio/JagannathSDE1.pdf';
 
 export const PROFILE = {
   name: 'Jagannath Shingne',
@@ -52,7 +52,7 @@ export const PROFILE = {
       id: 'linkedin',
       label: 'LinkedIn',
       handle: 'Jagannath-Shingne',
-      url: 'https://www.linkedin.com/in/jagannath-shingne',
+      url: 'https://www.linkedin.com/in/jagannath-shingne-201aba236',
       description: 'Professional experience, production milestones, and engineering updates.',
     },
     {

@@ -22,8 +22,7 @@ export function HeroSection({ theme, onToggleTheme, onOpenResume }: HeroSectionP
   const [selectedNodeId, setSelectedNodeId] = useState(ARCHITECTURE_NODES[2].id);
   const [copiedEmail, setCopiedEmail] = useState(false);
 
-  const activeNode =
-    ARCHITECTURE_NODES.find((node) => node.id === selectedNodeId) ?? ARCHITECTURE_NODES[0];
+  const activeNode = ARCHITECTURE_NODES.find((node) => node.id === selectedNodeId) ?? ARCHITECTURE_NODES[0];
 
   const handleCopyEmail = async () => {
     try {
